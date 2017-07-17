@@ -31,7 +31,7 @@ function checkPassword() {
     for (i=0, i < wordsList.length < i++) {
       if (pw == wordsList[i]) {
         isSecure = false;
-        matchingWord = wordsList[i]
+        matchingWord = wordsList[i];
 
     /* Put your loop statement here. */ ) {
       /* ADD YOUR CODE BELOW - If the password variation matches the dictionary word, it's not a secure password */
