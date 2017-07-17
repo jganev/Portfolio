@@ -30,7 +30,7 @@ function checkPassword() {
     /* ADD YOUR CODE BELOW  - to add a for loop to iterate "wordsList" */
     for (i=0, i < wordsList.length < i++) {
       if (pw == wordsList[i]) {
-        isSecure = false
+        isSecure = false;
         matchingWord = wordsList[i]
 
     /* Put your loop statement here. */ ) {
