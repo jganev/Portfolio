@@ -1,18 +1,57 @@
 <!DOCTYPE html>
 <html>
-      <head>
-            <p>Hi</p>
-      </head>
-      <script>
+<head>
+<p>Hi</p>
+</head>
+<script>
+
+function errorHandler(event){
+  if(event.target.error.name) == "NotReadableError"){
+    alert('Cannot read file!');
+  }
+}
+
+function getAsText(fileToRead){
+  let reader = new FileReader();
+
+  reader.readAsText(fileToRead);
+
+  reader.onload = loadHandler;
+  reader.onerror = errorHandler;
+}
+
 function handleFiles(files) {
-      // Check for the various File API support.
       if (window.FileReader) {
-          // FileReader are supported.
           getAsText(files[0]);
+          fileUploaded = true;
       } else {
           alert('FileReader are not supported in this browser.');
       }
     }
-handleFiles(colleges.csv);
+
+function loadHandler(event){
+  let csv = event.target.result;
+  processData(csv);
+}
+
+function processData(csv){
+  let allTextLines = csv.split(',');
+
+  for(let i = 0; i < allTextLines.length; i++){
+    let row = allTextLines[i].split(';');
+
+    let col = [];
+
+    for (let j = 0; j < row.length; j++){
+      col.push(row[j]);
+    }
+
+    attendeesArray.push(col);
+
+  }
+}
+    <script type="text/javascript" src="static/js/read-csv.js"></script>
+    <input type="file" id="csvFileInput" onchange="handleFiles(this.files)"
+            accept=".csv">
 </script>
 </html>
